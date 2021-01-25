@@ -11,15 +11,21 @@
     <title>Y-TEAM</title>
 </head>
 <body>
-	<!-- MATERIALIZE -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
-    <!--ME-->
+    <!--OTHER-->
+    <script defer src="JS/Controller.js"></script>
+    <script defer src="JS/CreateViews.js"></script>
+    <!--MODEL-->
     <script  src="JS/model/Project.js"></script>
     <script  src="JS/model/Task.js"></script>
-    <script  src="JS/bussiness/ProjectBs.js"></script>
-    <script  src="JS/bussiness/TaskBs.js"></script>
-
-    <script defer src="JS/controller.js"></script>
+    <script  src="JS/model/Dashboad.js"></script>
+    <script  src="JS/model/FetchHelper.js"></script>
+    <!--BUSSINES-->
+    <script  src="JS/bussiness/TaskBs.js"></script>    
+    <script  src="JS/bussiness/ProjectBs.js"></script>    
+    <script  src="JS/bussiness/DashboardBs.js"></script>
+    
+	<!-- MATERIALIZE -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
 
 
 
@@ -37,10 +43,7 @@
     
 
     <ul id="slide-out" class="sidenav sidenav-fixed">
-        <li><a href="#!">Proyecto 1</a></li>
-        <li><a href="#!">Proyecto 2</a></li>
-        <li><a href="#!">Proyecto 3</a></li>
-        
+        <li><a id="btnAddProject" class="waves-effect waves-light btn-large purple">New Project</a></li>
     </ul>
 
     <main class="task-container">
@@ -93,17 +96,29 @@
         </div>
     </div>
 
-
+    <!--Modal Create Project-->
+    <div id="modalCreateProject" class="modal">
+        <div class="modal-content">
+            <form>
+                <label for="newProjectName">Nombre del proyecto</label>
+                <input id="newProjectName" type="text">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="waves-effect waves-light btn gray">Cancelar</a>
+            <a href="#" id="btnAcceptCreateProject" class="waves-effect waves-light btn purple">Guardar</a>
+        </div>
+    </div>
 
     <!--Modal Update-->
     <div id="modalUpdate" class="modal bottom-sheet">
         <div class="modal-content">
             <div class="row">
                 <div class="col s12">
-                    <h4>Proyecto 1</h4>
+                    <h4 id="project">Proyecto 1</h4>
                 </div>
                 <div class="col s12">
-                    <p>Tarea Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto doloribus explicabo, voluptatem quia culpa laborum voluptates nihil veritatis necessitatibus id nisi, laboriosam pariatur. Quam repellendus quidem, voluptas possimus quibusdam ratione?</p>
+                    <p id="name">Tarea Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto doloribus explicabo, voluptatem quia culpa laborum voluptates nihil veritatis necessitatibus id nisi, laboriosam pariatur. Quam repellendus quidem, voluptas possimus quibusdam ratione?</p>
                 </div>
                 <div class="col s12">
                     <label for="progress">Avance</label>

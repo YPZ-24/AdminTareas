@@ -1,12 +1,17 @@
 
+
+
 document.querySelectorAll(".datepicker").forEach((dp)=>{
     M.Datepicker.init(dp);
 })
 const sidenav = M.Sidenav.init(document.querySelectorAll('.sidenav'));
 const modalDelete = M.Modal.init(document.querySelector("#modalDelete"));
+const modalCreateProject = M.Modal.init(document.querySelector("#modalCreateProject"));
 const modalUpdate = M.Modal.init(document.querySelector("#modalUpdate"));
 const taskRow = document.querySelectorAll(".task-row");
 const btnAddTask = document.querySelector("#btnAddTask");
+const btnAddProject = document.querySelector("#btnAddProject");
+const btnAcceptCreateProject = document.querySelector("#btnAcceptCreateProject");
 
 //Variables
 let draggedElement;
@@ -24,15 +29,38 @@ document.addEventListener("dragover", function(e) {
 
 btnAddTask.addEventListener("click", btnAddTaskClickController);
 
+btnAddProject.addEventListener("click", btnAddProjectController);
 
 document.addEventListener("drop", documentDropController);
+
+btnAcceptCreateProject.addEventListener("click", btnAcceptCreateProjectController);
 
 
 //Listeners Controllers
 
+async function btnAcceptCreateProjectController(){
+    const newProjectName = document.querySelector("#newProjectName").value;
+    const project = new Project(null, newProjectName);
+    console.log("Proyecto");
+    console.log(project);
+    const projectCreated = await createProject(project);
+    if(projectCreated!=null){
+        
+        M.toast({html: 'Project Created...!'})
+        modalCreateProject.close();
+        paintProject(projectCreated.name)
+        console.log(projectCreated)
+        console.log("pintando");
+    }
+}
+
+function btnAddProjectController(){
+    modalCreateProject.open();
+}
+
 function btnAddTaskClickController(){
-    console.log("You click me")
-    createProject();
+    //paintProject("Proyecto 4");
+    //repaintModalProject("Proyectito", "Esta es la descripcion", "10", "24-01-2021", "24-01-2021");
 }
 
 function taskDblClickController(){
