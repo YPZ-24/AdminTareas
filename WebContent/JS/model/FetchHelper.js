@@ -1,8 +1,6 @@
 async function FETCH (method, path, body) {
     const bodyString = (body==null) ? null : JSON.stringify(body);
-    console.log(bodyString);
     try{
-        console.log("1");
         const res = await fetch(path, {
         method: method,
         body: bodyString,

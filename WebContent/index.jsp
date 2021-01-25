@@ -115,10 +115,14 @@
         <div class="modal-content">
             <div class="row">
                 <div class="col s12">
-                    <h4 id="project">Proyecto 1</h4>
+                    <h4 id="project">Task</h4>
                 </div>
                 <div class="col s12">
+                    <label for="name">Nombre</label>
+                    <input id="name" type="text">
+                    <!--
                     <p id="name">Tarea Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto doloribus explicabo, voluptatem quia culpa laborum voluptates nihil veritatis necessitatibus id nisi, laboriosam pariatur. Quam repellendus quidem, voluptas possimus quibusdam ratione?</p>
+                    -->
                 </div>
                 <div class="col s12">
                     <label for="progress">Avance</label>
@@ -131,8 +135,8 @@
                     <input id="dateStart" type="text" class="datepicker">
                 </div>
                 <div class="input-field col s6">
-                    <label for="dateEnd">Fecha termino</label>
-                    <input id="dateEnd" type="text" class="datepicker">
+                    <label for="dateEnd">Duracion</label>
+                    <input id="dateEnd" type="text">
                 </div>
                 <div class="col s12 right-align">
                     <a class="waves-effect waves-light btn grey lighten-1">Cancelar</a>
@@ -141,7 +145,7 @@
             </div>   
         </div>
         <div class="modal-footer">
-            <a class="waves-effect waves-light btn red darken-4">Eliminar Tarea</a>
+            <a id="btnDeleteTask" class="waves-effect waves-light btn red darken-4">Eliminar Tarea</a>
         </div>
       </div>
 

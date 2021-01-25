@@ -3,6 +3,9 @@ function paintTask(task){
 
     const divRow = document.createElement("div");
     divRow.setAttribute("class", "task-row row valign-wrapper");
+    divRow.addEventListener("dblclick", (e)=>{
+        taskDblClickController(task)
+    });
 
     const divColTask = document.createElement("div");
     divColTask.setAttribute("class", "col s5");
@@ -30,6 +33,7 @@ function paintTask(task){
     divRow.appendChild(divColProgress);
 
     tasksPanel.appendChild(divRow);
+    
 }
 
 function paintProject(project){
@@ -56,7 +60,6 @@ function repaintModalProject(newProjectName, newName, newPercentageProgress, new
     const dateEnd = document.querySelector("#dateEnd");
 
     project.lastChild.remove();
-    name.lastChild.remove();
 
     const projectTxt = document.createTextNode(newProjectName);
     const nameTxt = document.createTextNode(newName);
@@ -65,13 +68,14 @@ function repaintModalProject(newProjectName, newName, newPercentageProgress, new
     h4Project.setAttribute("id", "project");
     h4Project.appendChild(projectTxt);
 
-    const pName = document.createElement("p");
-    pName.setAttribute("id", "name");
-    pName.appendChild(nameTxt);
+    //const pName = document.createElement("p");
+    //pName.setAttribute("id", "name");
+    //pName.appendChild(nameTxt);
 
     project.appendChild(h4Project);
-    name.appendChild(pName);
+    //name.appendChild(pName);
 
+    name.value = newName;
     progress.value = newPercentageProgress;
     dateStart.value = newDateStart;
     dateEnd.value = newDateEnd;

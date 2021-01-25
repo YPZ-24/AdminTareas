@@ -54,8 +54,6 @@ async function clickProjectController(project){
     tasksPanel.innerHTML = '';
 
     const projectTasks = await getProjectTasks(project);
-    console.log("TASK")
-    console.log(projectTasks)
     projectTasks.forEach(t => {
         const task = new Task(t.id, t.cveProject, t.name, t.dateStart, t.duration, t.predecessor, t.progress);
         paintTask(task);
@@ -67,12 +65,29 @@ function btnAddProjectController(){
 }
 
 function btnAddTaskClickController(){
+    
     //paintProject("Proyecto 4");
     //repaintModalProject("Proyectito", "Esta es la descripcion", "10", "24-01-2021", "24-01-2021");
 }
 
-function taskDblClickController(){
+function taskDblClickController(task){
+    const project = document.querySelector("#project");
+    const name = document.querySelector("#name");
+    const progress = document.querySelector("#progress");
+    const dateStart = document.querySelector("#dateStart");
+    const dateEnd = document.querySelector("#dateEnd");
+    const btnDeleteTask = document.querySelector("#btnDeleteTask");
+
+    name.value = task.name;
+    progress.value = task.progress;    
+    dateStart.value = task.dateStart;
+    dateEnd.value = task.duration;
+    btnDeleteTask.onclick = btnDeleteTaskController(task.id)
     modalUpdate.open();
+}
+
+function btnDeleteTaskController(idTask){
+    //alert(idTask);
 }
 
 function taskDragRowController(e){
