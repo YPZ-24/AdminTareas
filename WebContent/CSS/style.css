@@ -1,0 +1,32 @@
+
+.task-container > .row{
+    margin-bottom: 0;
+}
+
+p{
+    margin: 0px;
+}
+
+.progress{
+    height: 15px !important;
+}
+
+.sidenav{
+    width: 200px;
+}
+
+header, main, footer {
+    padding-left: 200px;
+}
+
+.btn-floating{
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+}
