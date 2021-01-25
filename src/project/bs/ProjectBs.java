@@ -7,7 +7,7 @@ import project.bean.Project;
 import task.bean.Task;
 
 public class ProjectBs {
-
+/*
 	public int saveProject(Project project) {
 		int statusCode;
 		ProjectBd projectBd = new ProjectBd();
@@ -21,6 +21,12 @@ public class ProjectBs {
 		}
 		
 		return statusCode;
+	}
+	*/
+	public Project createProject(Project project) {
+		ProjectBd projectBd = new ProjectBd();
+		Project projectCreated = projectBd.createProject(project);
+		return projectCreated;
 	}
 	
 	public boolean projectExists(Project project) {
@@ -52,7 +58,15 @@ public class ProjectBs {
 		return project;
 	}
 	
+	public ArrayList<Project> getProjects(){
+		ProjectBd projectBd = new ProjectBd();
+		return projectBd.getProjects();
+	}
 	
+	public ArrayList<Task> getProjectTasks(String cveProject){
+		ProjectBd projectBd = new ProjectBd();
+		return projectBd.getProjectTasks(cveProject);
+	}
 	
 	/*
 	public void registraProyecto(Project proyecto) {

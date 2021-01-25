@@ -18,3 +18,5 @@ class Dashboard{
     }
 
 }
+
+//INSERT INTO task(cveProject, name, datestart, duration, predecessor, progress) values (2, 'Esta es la tarea 2','25-01-2021', '20', '1', '20');

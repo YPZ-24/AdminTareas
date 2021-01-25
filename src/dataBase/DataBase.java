@@ -24,7 +24,6 @@ public class DataBase {
 		return conn;
 	}
 	
-	
 }
 	
 

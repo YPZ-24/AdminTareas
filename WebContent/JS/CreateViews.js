@@ -1,4 +1,4 @@
-function paintTask(taskName, progressPercentaje){
+function paintTask(task){
     const tasksPanel = document.querySelector(".task-container");
 
     const divRow = document.createElement("div");
@@ -9,7 +9,7 @@ function paintTask(taskName, progressPercentaje){
 
     const pTask = document.createElement("p");
     pTask.setAttribute("class", "m12");
-    const taskText = document.createTextNode(taskName);
+    const taskText = document.createTextNode(task.name);
 
     const divColProgress = document.createElement("div");
     divColProgress.setAttribute("class", "col s7");
@@ -19,7 +19,7 @@ function paintTask(taskName, progressPercentaje){
 
     const divDeterminate = document.createElement("div");
     divDeterminate.setAttribute("class", "determinate");
-    divDeterminate.setAttribute("style", "width: "+progressPercentaje);
+    divDeterminate.setAttribute("style", "width: "+task.progress+"%");
 
     divProgress.appendChild(divDeterminate);
     divColProgress.appendChild(divProgress);
@@ -32,15 +32,19 @@ function paintTask(taskName, progressPercentaje){
     tasksPanel.appendChild(divRow);
 }
 
-function paintProject(projectName){
+function paintProject(project){
     const projectsPanel = document.querySelector("#slide-out");
 
     const li = document.createElement("li")
     const a = document.createElement("a")
-    const projectNameTxt = document.createTextNode(projectName);
+    const projectNameTxt = document.createTextNode(project.name);
 
     a.appendChild(projectNameTxt);
     li.appendChild(a);
+    a.addEventListener("click", ()=>{
+        clickProjectController(project);
+    })
+
     projectsPanel.appendChild(li);
 }
 

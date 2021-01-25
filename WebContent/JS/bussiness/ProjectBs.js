@@ -8,7 +8,7 @@ let path = "ProjectSv";
 //Return project created;
 async function createProject(project){
     let path = "createProjectSv";
-    let fetchResult = FETCH("POST", path, project);
+    let fetchResult = await FETCH("POST", path, project);
     if(fetchResult instanceof Error){
         //Ocurrio un error en el fetch
         alert(fetchResult.message);
@@ -16,12 +16,24 @@ async function createProject(project){
         return fetchResult;
     }
 }
-
+/*
 //Return project updated
 async function updateProject(project){
     let path = "updateProject";
 
     let fetchResult = FETCH("PUT", path, project);
+    if(fetchResult instanceof Error){
+        //Ocurrio un error en el fetch
+        alert(fetchResult.message);
+    }else{
+        return fetchResult;
+    }
+}*/
+
+//Return project tasks
+async function getProjectTasks(project){
+    let path = "getProjectTasksSv";
+    let fetchResult = await FETCH("POST", path, project);
     if(fetchResult instanceof Error){
         //Ocurrio un error en el fetch
         alert(fetchResult.message);

@@ -41,17 +41,25 @@ btnAcceptCreateProject.addEventListener("click", btnAcceptCreateProjectControlle
 async function btnAcceptCreateProjectController(){
     const newProjectName = document.querySelector("#newProjectName").value;
     const project = new Project(null, newProjectName);
-    console.log("Proyecto");
-    console.log(project);
     const projectCreated = await createProject(project);
     if(projectCreated!=null){
-        
         M.toast({html: 'Project Created...!'})
         modalCreateProject.close();
         paintProject(projectCreated.name)
-        console.log(projectCreated)
-        console.log("pintando");
     }
+}
+
+async function clickProjectController(project){
+    const tasksPanel = document.querySelector(".task-container");
+    tasksPanel.innerHTML = '';
+
+    const projectTasks = await getProjectTasks(project);
+    console.log("TASK")
+    console.log(projectTasks)
+    projectTasks.forEach(t => {
+        const task = new Task(t.id, t.cveProject, t.name, t.dateStart, t.duration, t.predecessor, t.progress);
+        paintTask(task);
+    });
 }
 
 function btnAddProjectController(){
